@@ -6,22 +6,22 @@ import (
 )
 
 type HiddifyOptions struct {
-	EnableFullConfig        bool        `json:"enable-full-config"`
-	LogLevel                string      `json:"log-level"`
-	LogFile                 string      `json:"log-file"`
-	EnableClashApi          bool        `json:"enable-clash-api"`
-	ClashApiPort            uint16      `json:"clash-api-port"`
-	ClashApiSecret          string      `json:"web-secret"`
-	Region                  string      `json:"region"`
-	BlockAds                bool        `json:"block-ads"`
-	UseXrayCoreWhenPossible bool        `json:"use-xray-core-when-possible"`
-	GeoIPPath               string      `json:"geoip-path"`
-	GeoSitePath             string      `json:"geosite-path"`
-	Rules                   []Rule      `json:"rules"`
-	Warp                    WarpOptions `json:"warp"`
-	Warp2                   WarpOptions `json:"warp2"`
-	Mux                     MuxOptions  `json:"mux"`
-	TLSTricks               TLSTricks   `json:"tls-tricks"`
+	EnableFullConfig        bool   `json:"enable-full-config"`
+	LogLevel                string `json:"log-level"`
+	LogFile                 string `json:"log-file"`
+	EnableClashApi          bool   `json:"enable-clash-api"`
+	ClashApiPort            uint16 `json:"clash-api-port"`
+	ClashApiSecret          string `json:"web-secret"`
+	Region                  string `json:"region"`
+	BlockAds                bool   `json:"block-ads"`
+	UseXrayCoreWhenPossible bool   `json:"use-xray-core-when-possible"`
+	// GeoIPPath        string      `json:"geoip-path"`
+	// GeoSitePath      string      `json:"geosite-path"`
+	Rules     []Rule      `json:"rules"`
+	Warp      WarpOptions `json:"warp"`
+	Warp2     WarpOptions `json:"warp2"`
+	Mux       MuxOptions  `json:"mux"`
+	TLSTricks TLSTricks   `json:"tls-tricks"`
 	DNSOptions
 	InboundOptions
 	URLTestOptions

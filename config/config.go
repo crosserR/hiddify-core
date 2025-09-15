@@ -155,7 +155,7 @@ func setOutbounds(options *option.Options, input *option.Options, opt *HiddifyOp
 		if err != nil {
 			return fmt.Errorf("failed to generate warp config: %v", err)
 		}
-		out.Tag = "Hiddify Warp ✅"
+		out.Tag = "Warp by v2cross_com ✅"
 		if opt.Warp.Mode == "warp_over_proxy" {
 			out.WireGuardOptions.Detour = OutboundSelectTag
 			OutboundMainProxyTag = out.Tag
@@ -693,19 +693,21 @@ func setRoutingOptions(options *option.Options, opt *HiddifyOptions) {
 		})
 
 		rulesets = append(rulesets, option.RuleSet{
-			Type:   C.RuleSetTypeLocal,
+			Type:   C.RuleSetTypeRemote,
 			Tag:    "geoip-" + opt.Region,
 			Format: C.RuleSetFormatBinary,
-			LocalOptions: option.LocalRuleSet{
-				Path: opt.GeoIPPath,
+			RemoteOptions: option.RemoteRuleSet{
+				URL:            "https://raw.githubusercontent.com/hiddify/hiddify-geo/rule-set/country/geoip-" + opt.Region + ".srs",
+				UpdateInterval: option.Duration(5 * time.Hour * 24),
 			},
 		})
 		rulesets = append(rulesets, option.RuleSet{
-			Type:   C.RuleSetTypeLocal,
+			Type:   C.RuleSetTypeRemote,
 			Tag:    "geosite-" + opt.Region,
 			Format: C.RuleSetFormatBinary,
-			LocalOptions: option.LocalRuleSet{
-				Path: opt.GeoSitePath,
+			RemoteOptions: option.RemoteRuleSet{
+				URL:            "https://raw.githubusercontent.com/hiddify/hiddify-geo/rule-set/country/geosite-" + opt.Region + ".srs",
+				UpdateInterval: option.Duration(5 * time.Hour * 24),
 			},
 		})
 
@@ -752,49 +754,49 @@ func setRoutingOptions(options *option.Options, opt *HiddifyOptions) {
 func patchHiddifyWarpFromConfig(out option.Outbound, opt HiddifyOptions) option.Outbound {
 	if opt.Warp.EnableWarp && opt.Warp.Mode == "proxy_over_warp" {
 		if out.DirectOptions.Detour == "" {
-			out.DirectOptions.Detour = "Hiddify Warp ✅"
+			out.DirectOptions.Detour = "Warp by v2cross_com ✅"
 		}
 		if out.HTTPOptions.Detour == "" {
-			out.HTTPOptions.Detour = "Hiddify Warp ✅"
+			out.HTTPOptions.Detour = "Warp by v2cross_com ✅"
 		}
 		if out.Hysteria2Options.Detour == "" {
-			out.Hysteria2Options.Detour = "Hiddify Warp ✅"
+			out.Hysteria2Options.Detour = "Warp by v2cross_com ✅"
 		}
 		if out.HysteriaOptions.Detour == "" {
-			out.HysteriaOptions.Detour = "Hiddify Warp ✅"
+			out.HysteriaOptions.Detour = "Warp by v2cross_com ✅"
 		}
 		if out.SSHOptions.Detour == "" {
-			out.SSHOptions.Detour = "Hiddify Warp ✅"
+			out.SSHOptions.Detour = "Warp by v2cross_com ✅"
 		}
 		if out.ShadowTLSOptions.Detour == "" {
-			out.ShadowTLSOptions.Detour = "Hiddify Warp ✅"
+			out.ShadowTLSOptions.Detour = "Warp by v2cross_com ✅"
 		}
 		if out.ShadowsocksOptions.Detour == "" {
-			out.ShadowsocksOptions.Detour = "Hiddify Warp ✅"
+			out.ShadowsocksOptions.Detour = "Warp by v2cross_com ✅"
 		}
 		if out.ShadowsocksROptions.Detour == "" {
-			out.ShadowsocksROptions.Detour = "Hiddify Warp ✅"
+			out.ShadowsocksROptions.Detour = "Warp by v2cross_com ✅"
 		}
 		if out.SocksOptions.Detour == "" {
-			out.SocksOptions.Detour = "Hiddify Warp ✅"
+			out.SocksOptions.Detour = "Warp by v2cross_com ✅"
 		}
 		if out.TUICOptions.Detour == "" {
-			out.TUICOptions.Detour = "Hiddify Warp ✅"
+			out.TUICOptions.Detour = "Warp by v2cross_com ✅"
 		}
 		if out.TorOptions.Detour == "" {
-			out.TorOptions.Detour = "Hiddify Warp ✅"
+			out.TorOptions.Detour = "Warp by v2cross_com ✅"
 		}
 		if out.TrojanOptions.Detour == "" {
-			out.TrojanOptions.Detour = "Hiddify Warp ✅"
+			out.TrojanOptions.Detour = "Warp by v2cross_com ✅"
 		}
 		if out.VLESSOptions.Detour == "" {
-			out.VLESSOptions.Detour = "Hiddify Warp ✅"
+			out.VLESSOptions.Detour = "Warp by v2cross_com ✅"
 		}
 		if out.VMessOptions.Detour == "" {
-			out.VMessOptions.Detour = "Hiddify Warp ✅"
+			out.VMessOptions.Detour = "Warp by v2cross_com ✅"
 		}
 		if out.WireGuardOptions.Detour == "" {
-			out.WireGuardOptions.Detour = "Hiddify Warp ✅"
+			out.WireGuardOptions.Detour = "Warp by v2cross_com ✅"
 		}
 	}
 	return out
