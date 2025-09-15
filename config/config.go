@@ -693,21 +693,19 @@ func setRoutingOptions(options *option.Options, opt *HiddifyOptions) {
 		})
 
 		rulesets = append(rulesets, option.RuleSet{
-			Type:   C.RuleSetTypeRemote,
+			Type:   C.RuleSetTypeLocal,
 			Tag:    "geoip-" + opt.Region,
 			Format: C.RuleSetFormatBinary,
-			RemoteOptions: option.RemoteRuleSet{
-				URL:            "https://raw.githubusercontent.com/hiddify/hiddify-geo/rule-set/country/geoip-" + opt.Region + ".srs",
-				UpdateInterval: option.Duration(5 * time.Hour * 24),
+			LocalOptions: option.LocalRuleSet{
+				Path: opt.GeoIPPath,
 			},
 		})
 		rulesets = append(rulesets, option.RuleSet{
-			Type:   C.RuleSetTypeRemote,
+			Type:   C.RuleSetTypeLocal,
 			Tag:    "geosite-" + opt.Region,
 			Format: C.RuleSetFormatBinary,
-			RemoteOptions: option.RemoteRuleSet{
-				URL:            "https://raw.githubusercontent.com/hiddify/hiddify-geo/rule-set/country/geosite-" + opt.Region + ".srs",
-				UpdateInterval: option.Duration(5 * time.Hour * 24),
+			LocalOptions: option.LocalRuleSet{
+				Path: opt.GeoSitePath,
 			},
 		})
 
